@@ -1,0 +1,41 @@
+<view class="user-box">
+    <image class="user-face" src="{{userface}}" mode="aspectFit"></image>
+    <view class="user-nick">{{usernick}}</view>
+</view>
+<view class='set {{loadclass}}'>
+    <view class="tail-swipe">
+        <view class='tail-hd'>选择爱车尾号</view>
+        <view class="tail-card">
+            <swiper class='swipe-box' current="{{tailnum}}" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" circular="{{circular}}" interval="5000" duration="1000" bindchange="swipeTailChange">
+                <block wx:for="{{tailnumArr}}" wx:key="{{index}}">
+                    <swiper-item>
+                        <text class='swipe-item'>{{item}}</text>
+                    </swiper-item>
+                </block>
+            </swiper>
+            <image class="swipe-img swipe-prev" src="../../asset/image/icon-prev.png" mode="aspectFit"></image>
+            <image class="swipe-img swipe-next" src="../../asset/image/icon-next.png" mode="aspectFit"></image>
+        </view>
+        <view class='tail-tip'>左右滑动选择尾号</view> 
+    </view>
+    <view class="set-switch">
+        <view class="weui-cells__title">提醒设置</view>
+        <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell weui-cell_switch">
+                <view class="weui-cell__bd">限行提前一天提醒</view>
+                <view class="weui-cell__ft">
+                    <switch bindchange="switchBanChange" checked="{{setban}}"/>
+                </view>
+            </view>
+            <view class="weui-cell weui-cell_switch">
+                <view class="weui-cell__bd">重污染天气预警实时提醒</view>
+                <view class="weui-cell__ft">
+                    <switch bindchange="switchWarnChange" checked="{{setwarn}}"/>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="set-btn">
+        <button class="weui-btn set-save" type="primary" size="mini" bindtap="saveSet">保存设置</button>
+    </view>
+</view>

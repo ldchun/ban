@@ -1,0 +1,22 @@
+page{position:relative;height:100%;background:#F3F7FA;}
+.lead-bd{position:relative;padding:10px;text-align:center;}
+.lead-banner{margin-top:20px;}
+.lead-logo{height:100px;}
+.lead-main{position:relative;}
+.lead-ad{height:300px;}
+.subtitle .tit-main{font-size:20px;font-weight:bold;color:#454545;white-space:nowrap;}
+.subtitle .tit-sub{font-size:20px;color:#666;white-space:nowrap;}
+button.lead-btn{width:160px;max-width:100%;margin-top:15px;font-size:16px;letter-spacing:1px;border-radius:30px;white-space:nowrap;}
+button.lead-btn[type="default"]{border:1px solid #349E7C;color:#349E7C;}
+.anim-lead-logo{animation-name:fadeInRight;}
+.anim-lead-ad{animation-name:fadeInUp;animation-delay:300ms;}
+.anim-lead-tit-main{animation-name:fadeInRight;animation-delay:800ms;}
+.anim-lead-tit-sub{animation-name:fadeInLeft;animation-delay:1000ms;}
+.anim-lead-car{animation-name:fadeInRight;animation-delay:1500ms;}
+.img-car{height:80px;}
+.lead-ft{position:absolute;z-index:10;width:100%;bottom:0;text-align:center;}
+.add-tip{color:#666;margin-left:10px;}
+.add-tip .tip-text{margin-bottom:5px;}
+.add-tip .tip-img{height:40px;}
+.add-btn{height:46px;line-height:42px;background:#FFF;}
+.add-btn .add-icon{height:36px;vertical-align:middle;}

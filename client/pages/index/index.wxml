@@ -1,0 +1,69 @@
+<view class="ban {{loadclass}}">
+    <view class="ban-plate">
+        <view class="ban-top flex-box">
+            <view class="ban-date flex-item">
+                <text class='date-day'>{{dateday}}</text>
+                <text class='date-week'>{{dateweek}}</text>
+            </view>
+            <view class="ban-set flex-item">
+                <image class="set-img" src="../../asset/image/icon-set.png" mode="aspectFit" bindtap="linkPageSet"></image>
+            </view>
+        </view>
+        <view class='plate-hd'>
+            <view class='plate-sign'>
+                <text class='signmax'></text>
+                <text class='signmin'></text>
+            </view>
+            <view class='car-me'>爱车</view>
+        </view>
+        <view class="ban-info flex-box">
+            <view class="ban-car">
+                <view class='title'>今日</view>
+                <view class='car-res {{bancolor}}'>{{bancar}}</view>
+                <!-- <view class='car-me'>爱车尾号<text>5</text></view> -->
+            </view>
+            <view class="ban-warn flex-item">
+                <image class="warn-img" src="{{pollimg}}" mode="aspectFit"></image>
+                <!-- <view class='title'>重污染天气</view> -->
+                <!-- <text class='warn-level'>黄色预警</text> -->
+                <!-- <view class='warn-res'></view> -->
+            </view>
+        </view>
+        <view class="ban-detail flex-box">
+            <view class="ban-tail flex-item clearfix">
+                <view class='detail-img'>
+                    <image src="../../asset/image/icon-stop.png" mode="aspectFit"></image>
+                </view>
+                <view class='detail-con'>
+                    <view class='detail-res'>{{bantail}}</view>
+                    <view class='detail-title'>限行尾号</view>
+                </view>
+            </view>
+            <view class="ban-time flex-item clearfix">
+                <view class='detail-img'>
+                    <image src="../../asset/image/icon-time.png" mode="aspectFit"></image>
+                </view>
+                <view class='detail-con'>
+                    <view class='detail-res'>{{bantime}}</view>
+                    <view class='detail-title'>限行时段</view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="ban-plate ban-area">
+        <view class='plate-hd'>
+            <view class='plate-sign'>
+                <text class='signmax'></text>
+                <text class='signmin'></text>
+            </view>
+        </view>
+        <view class='ban-box'><text class='info-title'>限行模式：</text>{{banmode}}</view>
+        <view class='ban-box'><text class='info-title'>预警信息：</text>{{banarea}}</view>
+        <view class='area-res'>
+            <image src="{{banmapimg}}" mode="widthFix"></image>
+        </view>
+    </view>
+    <view class='ban-share'>
+        <button class="weui-btn share-btn" open-type="share" type="primary">邀请好友开启限行提醒</button>
+    </view>
+</view>

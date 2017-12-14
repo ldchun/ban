@@ -1,0 +1,21 @@
+page{padding:5px 0;background:#F3F7FA;}
+.weui-cells{font-size:15px;}
+.weui-cells:before, .weui-cells:after{border:0 none;}
+.weui-cell_switch{padding-top:8px;padding-bottom:8px;} 
+.user-box{position:absolute;top:0;left:15px;width:50px;text-align:center;}
+.user-face{width:50px;height:50px;border-radius:50%;border:3px solid #FFF;}
+.user-nick{color:#333;margin-top:-5px;font-size:13px;line-height:1;}
+.tail-swipe{position:relative;width:80%;margin:25px auto;}
+.tail-hd{font-size:18px;line-height:3;text-align:center;}
+.tail-card{position:relative;width:150px;height:150px;margin:0 auto;padding:10px;border-radius:50%;}
+.swipe-box{position:relative;width:110px;height:110px;border:10px solid #c3f0de;border-radius:50%;background:#02B265;}
+.swipe-box swiper-item{text-align:center;}
+.swipe-item{display:inline-block;font-size:62px;font-weight:bold;width:80px;line-height:110px;border-radius:50%;color:#fff;}
+.swipe-img{width:15px;}
+.swipe-prev,.swipe-next{position:absolute;z-index:10;top:0;height:100%;line-height:1;text-align:center;color:#FFF;}
+.swipe-prev{left:-25px;}
+.swipe-next{right:-25px;}
+.tail-tip{position:relative;z-index:1;margin-top:-5px;font-size:13px;line-height:1;color:#868686;text-align:center;}
+.set-btn{margin-top:50px;text-align:center;}
+.set-save{border-radius:25px;}
+button.set-save[size="mini"]{padding:0 35px;font-size:16px;}
