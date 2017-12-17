@@ -12,7 +12,9 @@
         <view class="tip-text">添加爱车尾号</view>
         <image class="tip-img" src="../../asset/image/icon-ardown.png" mode="aspectFit"></image>
     </view>
-    <view class="add-btn" bindtap="linkPage">
+    <form bindsubmit="formSubmit" report-submit="true">
+    <button class="msgbtn add-btn" form-type="submit" bindtap="linkPage">
         <image class="add-icon" src="../../asset/image/icon-add.png" mode="aspectFit"></image>
-    </view>
+    </button>
+    </form>
 </view>

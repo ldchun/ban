@@ -5,6 +5,7 @@ var Server = config.service;
 var Session = common.Session;
 var AppPages = common.AppPages;
 var UserIdFun = common.UserIdFun;
+var FormIdFun = common.FormIdFun;
 // 变量设置
 var weekCN = ['日','一','二','三','四','五','六'];
 var imgUrlBase = "../../asset/image/";
@@ -182,6 +183,39 @@ Page({
     linkPageSet: function(){
         wx.navigateTo({
             url: AppPages.pageSet
+        })
+    },
+    formSubmit: function (e) {
+        var formId = e.detail.formId;
+        var expire = FormIdFun.expire();
+        var formIdArr = getApp().globalData.formIdArr;
+        var data = formId + "&" + expire;
+        formIdArr.push(data);
+        getApp().globalData.formIdArr = formIdArr;
+    },
+    sendMsg: function (e) {
+        var inData = {};
+        inData.type = "ban";
+        inData.userId = UserIdFun.get();
+        inData.formId = "";
+        var formIdArr = getApp().globalData.formIdArr;
+        if (formIdArr.length > 0){
+            inData.formId = formIdArr[0].split("&")[0];
+        }
+        formIdArr.shift();
+        getApp().globalData.formIdArr = formIdArr;
+        this.setData({
+            bantail: inData.formId
+        });
+        wx.request({
+            url: Server.sendMsgUrl,
+            data: inData,
+            success: function (res) {
+                console.log(res.data);
+            },
+            fail: function (error) {
+                console.log(error)
+            }
         })
     }
 });

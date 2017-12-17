@@ -8,6 +8,7 @@ App({
 	onHide: function () {
 	},
 	globalData: {
-		userreg: false
+		userreg: false,
+        formIdArr: []
 	}
 });

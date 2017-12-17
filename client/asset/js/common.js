@@ -156,6 +156,12 @@ var UserIdFun = {
         Session.clear(UserIdFun.userkey);
     }
 };
+var FormIdFun = {
+    // 计算7天后的过期时间截
+    expire: function () {
+        return Math.floor(new Date().getTime() / 1000) + 604800;
+    }
+};
 /* 公共API接口定义 */
 module.exports = {
     wxShowToast: wxShowToast,
@@ -165,5 +171,6 @@ module.exports = {
     ShareApp: ShareApp,
     Session: Session,
     AppPages: AppPages,
-    UserIdFun: UserIdFun
+    UserIdFun: UserIdFun,
+    FormIdFun: FormIdFun
 }

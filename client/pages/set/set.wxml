@@ -2,6 +2,7 @@
     <image class="user-face" src="{{userface}}" mode="aspectFit"></image>
     <view class="user-nick">{{usernick}}</view>
 </view>
+<form bindsubmit="formSubmit" report-submit="true">
 <view class='set {{loadclass}}'>
     <view class="tail-swipe">
         <view class='tail-hd'>选择爱车尾号</view>
@@ -36,6 +37,7 @@
         </view>
     </view>
     <view class="set-btn">
-        <button class="weui-btn set-save" type="primary" size="mini" bindtap="saveSet">保存设置</button>
+        <button class="weui-btn set-save" form-type="submit" type="primary" size="mini" bindtap="saveSet">保存设置</button>
     </view>
 </view>
+</form>

@@ -29,7 +29,9 @@ var config = {
         // 用户更新设置
         setUpdateUrl: `${host}/weapp/ban/setupdate`,
         // 获取限行数据
-        getBanDataUrl: `${host}/weapp/ban/getdata`
+        getBanDataUrl: `${host}/weapp/ban/getdata`,
+        // 发送通知提醒
+        sendMsgUrl: `${host}/weapp/notice/sendmsg`
     }
 };
 module.exports = config;

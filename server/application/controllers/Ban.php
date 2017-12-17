@@ -61,18 +61,20 @@ class Ban extends CI_Controller {
 		return $data;
     }
     /*
-	* 编码用户id
+	* 编码openid生成userId
 	*/
-    public function encodeId($id) {
-        // MD5加密生成用户id
-        $idcode = md5($id);
-        // 前后调转
-        $idfront = substr($idcode, 0, 16);
-        $idend = substr($idcode, 16);
-        return $idend . $idfront;
+    public function encodeId($openid) {
+        // 用户openid
+        $id_length = strlen($openid);
+        $cut_index = ($id_length > 10) ? 10 : 5;
+        // 前后调转生成 userId
+        $idfront = substr($openid, 0,  $cut_index);
+        $idend = substr($openid, $cut_index);
+        $userId = $idend . $idfront;
+        return $userId;
     }
     /*
-	* 用户是否注册
+	* 用户登录
 	*/
     public function wxlogin() {
         // 输入参数
@@ -90,7 +92,7 @@ class Ban extends CI_Controller {
         // openid编码生成用户id
         $userid = Ban::encodeId($openid);
         $this->json([
-            'msg' => "",
+            'msg' => $openid,
             'code' => 200,
             'data' => $userid
         ]);

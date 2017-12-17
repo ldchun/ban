@@ -32,7 +32,7 @@ page{height:100%;background:#F3F7FA;
 .area-res image{max-width:85%;height:120px;}
 .info-title{color:#E8F740;}
 .ban-detail .ban-tail{max-width:70%;}
-.detail-con .detail-res{word-break:break-all;}
+.detail-con .detail-res{min-height:25px;word-break:break-all;}
 .ban-share{position:fixed;z-index:100;left:0;bottom:5px;width:100%;padding:0 10%;text-align:center;background:transparent;}
 button.share-btn{border-radius:35px;font-size:18px;line-height:2.3;}
 button.share-btn[type="primary"]{background:rgba(1,218,113,0.8);}

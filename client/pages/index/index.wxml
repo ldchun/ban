@@ -1,3 +1,4 @@
+<form bindsubmit="formSubmit" report-submit="true">
 <view class="ban {{loadclass}}">
     <view class="ban-plate">
         <view class="ban-top flex-box">
@@ -6,7 +7,9 @@
                 <text class='date-week'>{{dateweek}}</text>
             </view>
             <view class="ban-set flex-item">
-                <image class="set-img" src="../../asset/image/icon-set.png" mode="aspectFit" bindtap="linkPageSet"></image>
+                <button class='msgbtn' form-type="submit" bindtap="linkPageSet">
+                    <image class="set-img" src="../../asset/image/icon-set.png" mode="aspectFit"></image>
+                </button>
             </view>
         </view>
         <view class='plate-hd'>
@@ -23,7 +26,7 @@
                 <!-- <view class='car-me'>爱车尾号<text>5</text></view> -->
             </view>
             <view class="ban-warn flex-item">
-                <image class="warn-img" src="{{pollimg}}" mode="aspectFit"></image>
+                <image class="warn-img" src="{{pollimg}}" mode="aspectFit" bindtap="sendMsg"></image>
                 <!-- <view class='title'>重污染天气</view> -->
                 <!-- <text class='warn-level'>黄色预警</text> -->
                 <!-- <view class='warn-res'></view> -->
@@ -64,6 +67,7 @@
         </view>
     </view>
     <view class='ban-share'>
-        <button class="weui-btn share-btn" open-type="share" type="primary">邀请好友开启限行提醒</button>
+        <button class="weui-btn share-btn" form-type="submit" open-type="share" type="primary">邀请好友开启限行提醒</button>
     </view>
 </view>
+</form>
