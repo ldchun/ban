@@ -87,14 +87,12 @@ class Ban extends CI_Controller {
 		// 请求数据
         $result = Ban::http($url_unionid, $data);
         $res = json_decode($result);
-        // openid
-        $openid = $res->openid;
-        // openid编码生成用户id
-        $userid = Ban::encodeId($openid);
+        // userId
+        $userId = $res->openid;
         $this->json([
-            'msg' => $openid,
+            'msg' => "get user id ok!",
             'code' => 200,
-            'data' => $userid
+            'data' => $userId
         ]);
     }
     /*

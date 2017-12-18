@@ -31,7 +31,9 @@ var config = {
         // 获取限行数据
         getBanDataUrl: `${host}/weapp/ban/getdata`,
         // 发送通知提醒
-        sendMsgUrl: `${host}/weapp/notice/sendmsg`
+        sendMsgUrl: `${host}/weapp/notice/sendmsg`,
+        // 保存FormIds
+        saveFormIds: `${host}/weapp/notice/saveFormIds`,
     }
 };
 module.exports = config;

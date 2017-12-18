@@ -6,7 +6,7 @@ var Session = common.Session;
 var AppPages = common.AppPages;
 var wxShowToast = common.wxShowToast;
 var UserIdFun = common.UserIdFun;
-
+var FormIdFun = common.FormIdFun;
 Page({
     data: {
         loadclass: 'slhide',
@@ -47,6 +47,12 @@ Page({
             })
         }
     },
+    onHide: function (e) {
+        FormIdFun.save();
+    },
+    onUnload: function (e) {
+        FormIdFun.save();
+    },
     swipeTailChange: function (e) {
         this.setData({
             tailnum: e.detail.current
@@ -70,6 +76,9 @@ Page({
         inData.setban = this.data.setban;
         inData.setwarn = this.data.setwarn;
         saveSetting(inData);
+    },
+    formSubmit: function (e) {
+        FormIdFun.pushid(e.detail.formId);
     }
 });
 // 转换请求参数

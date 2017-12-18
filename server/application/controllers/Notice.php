@@ -114,46 +114,70 @@ class Notice extends CI_Controller {
         // 输入判断
         $userId = isset($userId) ? $userId : '';
         $formIds = isset($formIds) ? $formIds : '';
-        // 请求参数
-        $openid = Notice::getOpenid($userId);
-        $formId_arr = explode(',', $formIds);
-        return ;
+        // 输出
+        $this->json([
+            'data' => $formIds
+        ]);
     }
     /*
 	* 发送消息
 	*/
     public function sendmsg() {
-        $tempid_arr = array(
-            "ban" => "BpW4GwiAExKoRN5rRnT79KTD-_WYrppz1w4K7KD-ey0",
-            "opll" => "BpW4GwiAExKoRN5rRnT79KTD-_WYrppz1w4K7KD-ey0"
-        );
         // 输入参数
         $userId = $_GET['userId'];
         $formId = $_GET['formId'];
         $type = $_GET['type'];
+        //$content = $_GET['content'];
         // 输入判断
         $userId = isset($userId) ? $userId : '';
         $formId = isset($formId) ? $formId : '';
         $type = isset($type) ? $type : 'ban';
         // 请求参数
         $access_token = Notice::getAccessToken();
-        $openid = Notice::getOpenid($userId);
         $url = "https://api.weixin.qq.com/cgi-bin/message/wxopen/template/send?access_token=" . $access_token;
+        $openid = $userId;
         // 模板消息数据
-        $template_data = array(
-            'keyword1' => array( "value" => "成都市应急启动重污染天气黄色预警", "color" => "#173177" ),
-            'keyword2' => array( "value" => "限行模式由鸳鸯锅变红锅,现行区域：绕城(含)以内", "color" => "#FF0000" )
+        $tempid_arr = array(
+            "ban" => "wefYGPWQRgi_pjA5Ef2pHEcsh2px9EBIwZ7q5tR0Fbk",
+            "poll" => "BpW4GwiAExKoRN5rRnT79KTD-_WYrppz1w4K7KD-ey0"
         );
+        $content = array(
+            'keyword1' => "你的车辆今日限行",
+            'keyword2' => "1,6",
+            'keyword3' => "限行模式鸳鸯锅，限行区域：中心城区二、三环(含)之间",
+        );
+        // 创建模板对象
+        function createTemplateData($type, $content){
+            $content = json_decode($content);
+            $template_data = array();
+            switch($type){
+                case 'poll':
+                    $template_data["keyword1"]["value"] = $content->keyword1;
+                    $template_data["keyword1"]["color"] = "#173177";
+                    $template_data["keyword2"]["value"] = $content->keyword2;
+                    $template_data["keyword2"]["color"] = "#FF0000";
+                    break;
+                default:
+                    $template_data["keyword1"]["value"] = $content->keyword1;
+                    $template_data["keyword1"]["color"] = "#173177";
+                    $template_data["keyword2"]["value"] = $content->keyword2;
+                    $template_data["keyword2"]["color"] = "#FF0000";
+                    $template_data["keyword3"]["value"] = $content->keyword3;
+                    $template_data["keyword3"]["color"] = "#FF0000";
+            }
+            return json_encode($template_data);
+        }
+        //请求参数
         $post_data = array(
             "page" => "/pages/index/index",
             "touser" => $openid,
             "template_id" => $tempid_arr[$type],
             "form_id" => $formId,
-            "data" => $template_data
+            "data" => json_decode(createTemplateData($type, json_encode($content)), true)
         );
-        $data = json_encode($post_data, true);
+        $data = json_encode($post_data);
         // 请求数据
-        $return = Notice::http_post( $url, $data);
+        $result = Notice::http_post( $url, $data );
         $res = json_decode($result);
         // 输出
         $this->json([

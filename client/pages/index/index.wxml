@@ -26,7 +26,7 @@
                 <!-- <view class='car-me'>爱车尾号<text>5</text></view> -->
             </view>
             <view class="ban-warn flex-item">
-                <image class="warn-img" src="{{pollimg}}" mode="aspectFit" bindtap="sendMsg"></image>
+                <image class="warn-img" src="{{pollimg}}" mode="aspectFit"></image>
                 <!-- <view class='title'>重污染天气</view> -->
                 <!-- <text class='warn-level'>黄色预警</text> -->
                 <!-- <view class='warn-res'></view> -->

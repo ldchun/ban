@@ -9,12 +9,13 @@ Page({
             url: AppPages.pageSet
         })
     },
+    onHide: function (e) {
+        FormIdFun.save();
+    },
+    onUnload: function (e) {
+        FormIdFun.save();
+    },
     formSubmit: function (e) {
-        var formId = e.detail.formId;
-        var expire = FormIdFun.expire();
-        var formIdArr = getApp().globalData.formIdArr;
-        var data = formId + "&" + expire;
-        formIdArr.push(data);
-        getApp().globalData.formIdArr = formIdArr;
+        FormIdFun.pushid(e.detail.formId);
     }
 });

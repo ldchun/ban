@@ -179,6 +179,12 @@ Page({
             getBanInfo(self);
         });
     },
+    onHide: function(e){
+        FormIdFun.save();
+    },
+    onUnload: function (e) {
+        FormIdFun.save();
+    },
     onShareAppMessage: common.ShareApp,
     linkPageSet: function(){
         wx.navigateTo({
@@ -186,12 +192,7 @@ Page({
         })
     },
     formSubmit: function (e) {
-        var formId = e.detail.formId;
-        var expire = FormIdFun.expire();
-        var formIdArr = getApp().globalData.formIdArr;
-        var data = formId + "&" + expire;
-        formIdArr.push(data);
-        getApp().globalData.formIdArr = formIdArr;
+        FormIdFun.pushid(e.detail.formId);
     },
     sendMsg: function (e) {
         var inData = {};
@@ -200,13 +201,10 @@ Page({
         inData.formId = "";
         var formIdArr = getApp().globalData.formIdArr;
         if (formIdArr.length > 0){
-            inData.formId = formIdArr[0].split("&")[0];
+            inData.formId = formIdArr[0].split(",")[0];
         }
         formIdArr.shift();
         getApp().globalData.formIdArr = formIdArr;
-        this.setData({
-            bantail: inData.formId
-        });
         wx.request({
             url: Server.sendMsgUrl,
             data: inData,

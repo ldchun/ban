@@ -1,3 +1,6 @@
+var config = require('../../config.js');
+var Server = config.service;
+// 设置
 var proName = "重污染天气来袭，今日出行到底红锅还是鸳鸯锅？";
 // 页面
 var AppPages = {
@@ -93,7 +96,6 @@ function DateInfo(time) {
 function objToUrl(obj){
   var url = "";
 }
-
 //校验是否为空
 function EmptyCheck(value, msg) {
   var res = true;
@@ -107,6 +109,7 @@ function EmptyCheck(value, msg) {
   }
   return res;
 }
+// 分享应用
 var ShareApp = function (res){
     console.log(res);
     return {
@@ -126,6 +129,7 @@ var ShareApp = function (res){
         }
     }
 }
+// Session操作
 var Session = {
     get: function (sessionkey) {
         return wx.getStorageSync(sessionkey) || null;
@@ -160,6 +164,39 @@ var FormIdFun = {
     // 计算7天后的过期时间截
     expire: function () {
         return Math.floor(new Date().getTime() / 1000) + 604800;
+    },
+    // 计算7天后的过期时间截
+    pushid: function (id) {
+        var formId = id;
+        var expire = FormIdFun.expire();
+        var data = formId + "," + expire;
+        var formIdArr = getApp().globalData.formIdArr;
+        formIdArr.push(data);
+        getApp().globalData.formIdArr = formIdArr;
+    },
+    // 保存formIds
+    save: function(){
+        var formIdArr = getApp().globalData.formIdArr;
+        do{
+            if (formIdArr.length <= 0) {
+                break;
+            }
+            var inData = {};
+            inData.userId = UserIdFun.get();
+            inData.formIds = "";
+            inData.formIds = formIdArr.join("|");
+            wx.request({
+                url: Server.saveFormIds,
+                data: inData,
+                success: function (res) {
+                    console.log(res.data);
+                },
+                fail: function (error) {
+                    console.log(error)
+                }
+            })
+            getApp().globalData.formIdArr = [];
+        }while(0);
     }
 };
 /* 公共API接口定义 */
