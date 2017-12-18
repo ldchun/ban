@@ -158,6 +158,7 @@ function appLogin(callback){
 Page({
     data: {
         loadclass: 'slhide',
+        popclass: 'slhide',
         dateday: "",
         dateweek: "",
         bancar: "不限",
@@ -189,6 +190,17 @@ Page({
     linkPageSet: function(){
         wx.navigateTo({
             url: AppPages.pageSet
+        })
+    },
+    banPopShow: function () {
+        console.log("show");
+        this.setData({
+            popclass: ""
+        })
+    },
+    banPopHide: function () {
+        this.setData({
+            popclass: "slhide"
         })
     },
     formSubmit: function (e) {

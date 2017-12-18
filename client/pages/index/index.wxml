@@ -67,7 +67,22 @@
         </view>
     </view>
     <view class='ban-share'>
-        <button class="weui-btn share-btn" form-type="submit" open-type="share" type="primary">邀请好友开启限行提醒</button>
+        <button class="weui-btn share-btn" form-type="submit" type="primary" bindtap="banPopShow">邀请好友开启限行提醒</button>
+    </view>
+    <view class='popover {{popclass}}'>
+        <view class='ban-pop'>
+            <view class='flex-box pop-menu'>
+                <button class="flex-item msgbtn menu" hover-class="btnhover" form-type="submit" open-type="share">
+                    <image src="../../asset/image/logowx.png" mode="aspectFit"></image>
+                    <view>发送给朋友或微信群</view>
+                </button>
+                <button class="flex-item msgbtn menu" hover-class="btnhover" form-type="submit">
+                    <image src="../../asset/image/logopyq.png" mode="aspectFit"></image>
+                    <view>生成朋友分享图</view>
+                </button>
+            </view>
+            <button class="msgbtn pop-close" hover-class="btnhover" form-type="submit" bindtap="banPopHide" hover-stop-propagation="true">取消</button>
+        </view>
     </view>
 </view>
 </form>
