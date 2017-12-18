@@ -180,7 +180,6 @@ Page({
             // 从服务器获取限行信息
             getBanInfo(self);
         });
-        ShareImgFun(self);
     },
     onHide: function(e){
         FormIdFun.save();
@@ -195,7 +194,6 @@ Page({
         })
     },
     banPopShow: function () {
-        console.log("show");
         this.setData({
             popclass: ""
         })
@@ -229,6 +227,29 @@ Page({
                 console.log(error)
             }
         })
+    },
+    // 生成分享图
+    createShareImg: function(){
+        var self = this;
+        wx.showLoading({
+            title: '正在生成图片...',
+            mask: true
+        })
+        // 获取用户信息
+        wx.getUserInfo({
+            success: function (res) {
+                var userInfo = res.userInfo;
+                var avatarUrl = userInfo.avatarUrl;
+                wx.downloadFile({
+                    url: avatarUrl,
+                    success: function (res) {
+                        userInfo.faceimg = res.tempFilePath;
+                        drawShareImg(self, userInfo);
+                    }
+                })
+            },
+            fail: function () { }
+        })
     }
 });
 // 获取请求参数
@@ -261,75 +282,82 @@ function getBanInfo(self){
         }
     })
 }
-// 分享图
-function ShareImgFun(self){
-    // 获取用户信息
-    wx.getUserInfo({
-        success: function (res) {
-            var userInfo = res.userInfo;
-            var avatarUrl = userInfo.avatarUrl;
-            wx.downloadFile({
-                url: avatarUrl,
-                success: function (res) {
-                    userInfo.faceimg = res.tempFilePath;
-                    createShareImg(self, userInfo);
-                }
-            })
-        },
-        fail: function(){}
-    })
-}
-//生成分享图
-function createShareImg(self, userInfo) {
+//画分享图
+function drawShareImg(self, userInfo) {
     var canvasInfo = {
-        width: 400,
-        height: 712
+        width: 420,
+        height: 747
     };
     //物理像素比
     var sysInfo = wx.getSystemInfoSync();
     var pixelRatio = sysInfo.pixelRatio;
     var shareBannerImg = {
         src: "../../asset/image/sharebanner.jpg",
-        width: 400,
-        height: 482
+        width: 420,
+        height: 506
     };
     const ctx = wx.createCanvasContext('myCanvas');
     // 底色白色
-    // ctx.rect(0, 0, canvasInfo.width, canvasInfo.height);
-    // ctx.setFillStyle('#FFFFFF');
-    // ctx.fill();
+    ctx.beginPath();
+    ctx.rect(0, 0, canvasInfo.width, canvasInfo.height);
+    ctx.setFillStyle('#FFFFFF');
+    ctx.fill();
+    ctx.closePath();
+
+    ctx.beginPath();
     // 顶部banner
     ctx.drawImage(shareBannerImg.src, 0, 0, shareBannerImg.width, shareBannerImg.height);
+    ctx.closePath();
     // 头像
     var faceImg = userInfo.faceimg;
-    ctx.drawImage(faceImg, 160, 442, 76, 76);
-    ctx.arc(200, 482, 40, 0, 2 * Math.PI);
-    ctx.setLineWidth(5);
+    //画圆形图片
+    function circleImg(ctx, img, x, y, r) {
+        ctx.save();
+        var d = 2 * r;
+        var cx = x + r;
+        var cy = y + r;
+        ctx.arc(cx, cy, r, 0, 2 * Math.PI);
+        ctx.clip();
+        ctx.drawImage(img, x, y, d, d);
+        ctx.restore();
+    }
+    circleImg(ctx, faceImg, 168, 466, 40);
+
+    ctx.beginPath();
+    ctx.arc(208, 506, 40, 0, 2 * Math.PI);
+    ctx.setLineWidth(2);
     ctx.setStrokeStyle('white');
     ctx.stroke();
+    ctx.closePath();
+
+    ctx.beginPath();
     // 昵称
     var nickName = userInfo.nickName;
     ctx.setTextAlign('center');
     ctx.setFillStyle('#333333');
-    ctx.setFontSize(13);
-    ctx.fillText(nickName, 200, 526);
+    ctx.setFontSize(16);
+    ctx.fillText(nickName, 210, 562);
     //文案
     ctx.setFillStyle('#666666');
     ctx.setTextAlign('center');
-    ctx.setFontSize(15);
-    ctx.fillText("邀你开启，成都重污染天气预警实时提醒", 200, 552);
+    ctx.setFontSize(18);
+    ctx.fillText("邀你开启，成都重污染天气预警实时提醒", 210, 590);
+    ctx.closePath();
+
+    ctx.beginPath();
     // 二维码
     var qrImg = "../../asset/image/qr.jpg";
-    ctx.drawImage(qrImg, 74, 583, 95, 95);
+    ctx.drawImage(qrImg, 80, 605, 110, 110);
     // 长按识别
-    // ctx.rect(190, 610, 2, 42);
-    // ctx.setFillStyle('yellow');
-    // ctx.fill();
+    ctx.rect(210, 633, 2, 42);
+    ctx.setFillStyle('yellow');
+    ctx.fill();
     ctx.setTextAlign('left');
-    ctx.setFillStyle('#666666');
-    ctx.setFontSize(15);
-    ctx.fillText("长按识别小程序码", 210, 610);
-    ctx.fillText("爱车出行无烦恼", 210, 635);
+    ctx.setFillStyle('#868686');
+    ctx.setFontSize(17);
+    ctx.fillText("长按识别小程序码", 220, 648);
+    ctx.fillText("爱车出行无烦恼", 220, 673);
+    ctx.closePath();
     ctx.draw();
     // 保存图片
     setTimeout(function savePic() {
@@ -340,26 +368,16 @@ function createShareImg(self, userInfo) {
             success: function (res) {
                 var imgPath = res.tempFilePath;
                 wx.hideLoading();
-                self.setData({
-                    shareimgHide: false,
-                    shareimgSrc: imgPath
-                });
-                return ;
-                // 保存图片
-                wx.saveImageToPhotosAlbum({
-                    filePath: imgPath,
-                    success: function (res) {
-
-                    },
-                    fail: function (res) {
-                        
-                    }
+                // 预览图片
+                wx.previewImage({
+                    current: imgPath,
+                    urls: [imgPath]
                 })
             },
             fail: function (err) {
                 console.log(err);
             }
         })
-    }, 300);
+    }, 500);
 }
 
