@@ -104,7 +104,7 @@ class Ban extends CI_Controller {
         // 输入判断
         $userId = isset($userId) ? $userId : '';
         // 请求参数
-        $url_isreg = "https://bilifun.co/user/isRegister";
+        $url_isreg = "http://47.95.113.141:8080/user/isRegister";
         $data = array("userId" => $userId);
 		// 请求数据
         $result = Ban::http($url_isreg, $data);
@@ -125,7 +125,7 @@ class Ban extends CI_Controller {
         // 输入判断
         $userId = isset($userId) ? $userId : '';
         // 请求参数
-        $url_userupdate = "https://bilifun.co/user/userInfo";
+        $url_userupdate = "http://47.95.113.141:8080/user/userInfo";
         $data = array("userId" => $userId);
 		// 请求数据
         $result = Ban::http($url_userupdate, $data);
@@ -154,7 +154,7 @@ class Ban extends CI_Controller {
         $confineAlert = isset($confineAlert) ? $confineAlert : true;
         $pollutionAlert = isset($pollutionAlert) ? $pollutionAlert : true;
         // 请求参数
-        $url_userreg = "https://bilifun.co/user/register";
+        $url_userreg = "http://47.95.113.141:8080/user/register";
         $data = array("userId" => $userId, "nickName" => $nickName, "tailNumber" => $tailNumber, "confineAlert" => $confineAlert, "pollutionAlert" => $pollutionAlert);
 		// 请求数据
         $result = Ban::http($url_userreg, $data);
@@ -181,7 +181,7 @@ class Ban extends CI_Controller {
         $confineAlert = isset($confineAlert) ? $confineAlert : true;
         $pollutionAlert = isset($pollutionAlert) ? $pollutionAlert : true;
         // 请求参数
-        $url_userupdate = "https://bilifun.co/user/update";
+        $url_userupdate = "http://47.95.113.141:8080/user/update";
         $data = array("userId" => $userId, "tailNumber" => $tailNumber, "confineAlert" => $confineAlert, "pollutionAlert" => $pollutionAlert);
 		// 请求数据
         $result = Ban::http($url_userupdate, $data);
@@ -204,7 +204,7 @@ class Ban extends CI_Controller {
         $userId = isset($userId) ? $userId : '';
         $date = isset($date) ? $date : date("Y-m-d");
         // 请求参数
-        $url_ban = "https://bilifun.co/alert";
+        $url_ban = "http://47.95.113.141:8080/alert";
         $data = array("date" => $date, "userId" => $userId);
 		// 请求数据
         $result = Ban::http($url_ban, $data);
