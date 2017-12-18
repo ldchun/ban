@@ -86,3 +86,7 @@
     </view>
 </view>
 </form>
+<view class="share">
+  <image class="shareimg" src="{{shareimgSrc}}" mode="widthFix" bindtap="shareimgPrev"></image>
+  <canvas class='sharecanvas' canvas-id="myCanvas" style="width:400px;height:711px;"/>
+</view>
