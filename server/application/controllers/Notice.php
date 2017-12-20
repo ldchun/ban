@@ -114,9 +114,16 @@ class Notice extends CI_Controller {
         // 输入判断
         $userId = isset($userId) ? $userId : '';
         $formIds = isset($formIds) ? $formIds : '';
+        // 请求参数
+        $url = "http://47.95.113.141:8080/addFromId";
+        $data = array(
+			"userId" => $userId,
+			"formIds" => $formIds
+			);
+        $result = Notice::http($url, $data);
         // 输出
         $this->json([
-            'data' => $formIds
+            'data' => $result
         ]);
     }
     /*
