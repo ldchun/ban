@@ -1,7 +1,8 @@
 var config = require('../../config.js');
 var Server = config.service;
-// 设置
-var proName = "重污染天气来袭，今日出行到底红锅还是鸳鸯锅？";
+//    设置
+/**            重污染天气来袭，今日出行到底红锅还是鸳鸯锅？ **/
+var proName = "重磅！明年1月22日起尾号限行区域扩大，告别“鸳鸯锅”";
 // 页面
 var AppPages = {
     pageLead: "/pages/lead/lead",
@@ -111,9 +112,8 @@ function EmptyCheck(value, msg) {
 }
 // 分享应用
 var ShareApp = function (res){
-    console.log(res);
     return {
-        title: proName,
+        title: getApp().globalData.sharetips,
         path: AppPages.pageBan,
         success: function (res) {
             wxShowToast({

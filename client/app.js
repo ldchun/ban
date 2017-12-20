@@ -9,6 +9,7 @@ App({
 	},
 	globalData: {
 		userreg: false,
+        sharetips: "重磅！明年1月22日起尾号限行区域扩大，告别“鸳鸯锅”",
         formIdArr: []
 	}
 });

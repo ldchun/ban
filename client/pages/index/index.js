@@ -279,8 +279,13 @@ function getBanInfo(self){
         data: inData,
         success: function (res) {
             wx.hideLoading();
-            var banData = fatServerData(res.data['data']);
+            var jsonData = res.data['data'];
+            var banData = fatServerData(jsonData);
             updateBanInfo(self, banData);
+            // 设置分享提示语
+            if ((typeof (jsonData['sharetips']) != 'undefined') && (jsonData['sharetips'].length > 0)){
+                getApp().globalData.sharetips = jsonData['sharetips'];
+            }
         },
         fail: function (error) {
             console.log(error)
