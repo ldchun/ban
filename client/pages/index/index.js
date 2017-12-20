@@ -108,8 +108,9 @@ function appLogin(callback){
                             break;
                     }
                 },
-                fail: function (error) {
-                    console.log(error)
+                fail: function (err) {
+					wx.hideLoading();
+                    console.log(err)
                 }
             })
         }while(0);
@@ -130,6 +131,9 @@ function appLogin(callback){
                             UserIdFun.set(userId);
                             // 检查用户
                             userIsReg(userId);
+                        },
+                        fail: function (err) {
+                            console.log(err);
                         }
                     })
                 } else {
@@ -138,6 +142,7 @@ function appLogin(callback){
             },
             fail: function (err) {
                 wx.hideLoading();
+				console.log(err);
             }
         });
     }
