@@ -125,4 +125,7 @@ textarea.pop-textarea{display:block;width:100%;height:20px;min-height:20px;paddi
 .animated{animation-duration:1s;animation-timing-function:ease-in-out;animation-delay:0;animation-fill-mode:both;}
 button[type="primary"]{background:#02B265;}
 button.msgbtn{display:inline-block;margin:0;padding:0;line-height:inherit;color:inherit;border:0 none;border-radius:0;background:transparent;}
-button.msgbtn::after,button.msgbtn::after{display:none;}
+button.msgbtn::before,button.msgbtn::after{display:none;}
+button.formbtn{display:block;margin:0;padding:0;font-size:inherit;color:inherit;line-height:inherit;text-align:inherit;border:0 none;
+    border-radius:0;background:inherit;}
+button.formbtn::before, button.formbtn::after{display:none;}

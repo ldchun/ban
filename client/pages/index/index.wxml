@@ -1,5 +1,6 @@
 <form bindsubmit="formSubmit" report-submit="true">
 <view class="ban {{loadclass}}">
+    <button class="formbtn" form-type="submit">
     <view class="ban-plate">
         <view class="ban-top flex-box">
             <view class="ban-date flex-item">
@@ -7,9 +8,7 @@
                 <text class='date-week'>{{dateweek}}</text>
             </view>
             <view class="ban-set flex-item">
-                <button class='msgbtn' form-type="submit" bindtap="linkPageSet">
-                    <image class="set-img" src="../../asset/image/icon-set.png" mode="aspectFit"></image>
-                </button>
+                <image class="set-img" src="../../asset/image/icon-set.png" mode="aspectFit" bindtap="linkPageSet"></image>
             </view>
         </view>
         <view class='plate-hd'>
@@ -23,13 +22,9 @@
             <view class="ban-car">
                 <view class='title'>今日</view>
                 <view class='car-res {{bancolor}}'>{{bancar}}</view>
-                <!-- <view class='car-me'>爱车尾号<text>5</text></view> -->
             </view>
             <view class="ban-warn flex-item">
                 <image class="warn-img" src="{{pollimg}}" mode="aspectFit"></image>
-                <!-- <view class='title'>重污染天气</view> -->
-                <!-- <text class='warn-level'>黄色预警</text> -->
-                <!-- <view class='warn-res'></view> -->
             </view>
         </view>
         <view class="ban-detail flex-box">
@@ -66,6 +61,7 @@
             <image src="{{banmapimg}}" mode="widthFix"></image>
         </view>
     </view>
+    </button>
     <view class='ban-share'>
         <button class="weui-btn share-btn" form-type="submit" type="primary" bindtap="banPopShow">邀请好友开启限行提醒</button>
     </view>

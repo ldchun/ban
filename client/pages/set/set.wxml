@@ -4,6 +4,7 @@
 </view>
 <form bindsubmit="formSubmit" report-submit="true">
 <view class='set {{loadclass}}'>
+    <button class="formbtn" form-type="submit">
     <view class="tail-swipe">
         <view class='tail-hd'>选择爱车尾号</view>
         <view class="tail-card">
@@ -36,6 +37,7 @@
             </view>
         </view>
     </view>
+    </button>
     <view class="set-btn">
         <button class="weui-btn set-save" form-type="submit" type="primary" size="mini" bindtap="saveSet">保存设置</button>
     </view>

@@ -172,6 +172,9 @@ var FormIdFun = {
         var data = formId + "," + expire;
         var formIdArr = getApp().globalData.formIdArr;
         formIdArr.push(data);
+        if(formIdArr.length > 10){
+            formIdArr.shift();
+        }
         getApp().globalData.formIdArr = formIdArr;
     },
     // 保存formIds

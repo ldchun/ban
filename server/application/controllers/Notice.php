@@ -115,7 +115,7 @@ class Notice extends CI_Controller {
         $userId = isset($userId) ? $userId : '';
         $formIds = isset($formIds) ? $formIds : '';
         // 请求参数
-        $url = "http://47.95.113.141:8080/addFromId";
+        $url = "http://47.95.113.141:8080/user/addFromId";
         $data = array(
 			"userId" => $userId,
 			"formIds" => $formIds

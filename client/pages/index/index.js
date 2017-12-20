@@ -163,7 +163,7 @@ function appLogin(callback){
 Page({
     data: {
         loadclass: 'slhide',
-        popclass: 'slhide',
+        popclass: 'pophide',
         dateday: "",
         dateweek: "",
         bancar: "不限",
@@ -205,7 +205,7 @@ Page({
     },
     banPopHide: function () {
         this.setData({
-            popclass: "slhide"
+            popclass: "pophide"
         })
     },
     formSubmit: function (e) {
