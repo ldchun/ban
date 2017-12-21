@@ -253,7 +253,20 @@ Page({
                     }
                 })
             },
-            fail: function () { }
+            fail: function (err) {
+                wx.hideLoading();
+                console.log(err);
+                wx.showModal({
+                    title: '提示',
+                    content: '生成分享图需要获取用户头像',
+                    showCancel: false,
+                    success: function (res) {
+                        wx.openSetting({
+                            success: function (res){ }
+                        })
+                    }
+                })
+            }
         })
     }
 });
@@ -287,8 +300,9 @@ function getBanInfo(self){
                 getApp().globalData.sharetips = jsonData['sharetips'];
             }
         },
-        fail: function (error) {
-            console.log(error)
+        fail: function (err) {
+            wx.hideLoading();
+            console.log(err);
         }
     })
 }
@@ -385,6 +399,7 @@ function drawShareImg(self, userInfo) {
                 })
             },
             fail: function (err) {
+                wx.hideLoading();
                 console.log(err);
             }
         })

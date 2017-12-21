@@ -115,9 +115,9 @@ function loadUserInfo(self) {
             wx.hideLoading();
             setUserInfo(self, jsonData['data']);
         },
-        fail: function (error) {
-            console.log(error);
+        fail: function (err) {
             wx.hideLoading();
+            console.log(err);
         }
     })
 }
