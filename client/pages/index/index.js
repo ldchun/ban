@@ -25,8 +25,8 @@ var getPollImg = function(level){
 };
 //返回限行地图
 var getBanMap = function (mode) {
-    var banMapArr = ["area-yy.png", "area-red.png"];
-    return imgUrlBase + banMapArr[mode-1];
+    var banMapArr = ["area-chengdu.png","area-yy.png", "area-red.png"];
+    return imgUrlBase + banMapArr[mode];
 };
 //返回限行地图
 var getBanTail = function (tail) {
@@ -173,7 +173,7 @@ Page({
         bantime: '',
         banmode: '',
         banarea: '',
-        banmapimg: getBanMap(1),
+        banmapimg: getBanMap(0),
         shareimgSrc: ""
     },
     onLoad: function (options) {
