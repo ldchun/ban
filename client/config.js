@@ -2,8 +2,10 @@
  * 小程序配置文件
  */
 // 此处主机域名修改成腾讯云解决方案分配的域名
-//var host = 'https://zgzvnrur.qcloud.la'; // env开发地址
-var host = 'https://329034146.chunapp.xyz'; // prod生产地址
+// var host = 'https://zgzvnrur.qcloud.la'; // 腾讯云env开发地址
+var host = 'https://329034146.chunapp.xyz'; // 腾讯云prod生产地址
+var hostjava = 'https://renxingstyle.xyz'; // java地址
+
 var config = {
     // 下面的地址配合云端 Demo 工作
     service: {
@@ -17,23 +19,41 @@ var config = {
         // 上传图片接口
         uploadUrl: `${host}/weapp/upload`,
 
-    /************** 增加功能 ****************/
+    /************** 增加功能 php qcloud****************/
+        // // 用户登录
+        // wxloginUrl: `${host}/weapp/ban/wxlogin`,
+        // // 用户是否注册
+        // isRegisterUrl: `${host}/weapp/ban/isregister`,
+        // // 用户信息
+        // userInfoUrl: `${host}/weapp/ban/userinfo`,
+        // // 用户注册并设置
+        // userRegUrl: `${host}/weapp/ban/userreg`,
+        // // 用户更新设置
+        // setUpdateUrl: `${host}/weapp/ban/setupdate`,
+        // // 获取限行数据
+        // getBanDataUrl: `${host}/weapp/ban/getdata`,
+        // // 发送通知提醒
+        // sendMsgUrl: `${host}/weapp/notice/sendmsg`,
+        // // 保存FormIds
+        // saveFormIds: `${host}/weapp/notice/saveFormIds`,
+
+    /************** 增加功能 java aliplay****************/
         // 用户登录
-        wxloginUrl: `${host}/weapp/ban/wxlogin`,
+        wxloginUrl: `${hostjava}/ban/user/wxlogin`,
         // 用户是否注册
-        isRegisterUrl: `${host}/weapp/ban/isregister`,
+        isRegisterUrl: `${hostjava}/ban/user/isRegister`,
         // 用户信息
-        userInfoUrl: `${host}/weapp/ban/userinfo`,
+        userInfoUrl: `${hostjava}/ban/user/userInfo`,
         // 用户注册并设置
-        userRegUrl: `${host}/weapp/ban/userreg`,
+        userRegUrl: `${hostjava}/ban/user/register`,
         // 用户更新设置
-        setUpdateUrl: `${host}/weapp/ban/setupdate`,
+        setUpdateUrl: `${hostjava}/ban/user/update`,
         // 获取限行数据
-        getBanDataUrl: `${host}/weapp/ban/getdata`,
-        // 发送通知提醒
-        sendMsgUrl: `${host}/weapp/notice/sendmsg`,
+        getBanDataUrl: `${hostjava}/ban/alert`,
         // 保存FormIds
-        saveFormIds: `${host}/weapp/notice/saveFormIds`,
+        saveFormIds: `${hostjava}/ban/user/addFromId`,
+        // 发送通知提醒
+        sendMsgUrl: `${hostjava}/ban/sendmsg`
     }
 };
 module.exports = config;
