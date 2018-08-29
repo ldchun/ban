@@ -3,8 +3,8 @@
  */
 // 此处主机域名修改成腾讯云解决方案分配的域名
 // var host = 'https://zgzvnrur.qcloud.la'; // 腾讯云env开发地址
-var host = 'https://329034146.chunapp.xyz'; // 腾讯云prod生产地址
-var hostjava = 'https://renxingstyle.xyz'; // java地址
+// var host = 'https://329034146.chunapp.xyz'; // 腾讯云prod生产地址
+var host = 'https://renxingstyle.xyz/ban'; // prod
 
 var config = {
     // 下面的地址配合云端 Demo 工作
@@ -39,21 +39,21 @@ var config = {
 
     /************** 增加功能 java aliplay****************/
         // 用户登录
-        wxloginUrl: `${hostjava}/ban/user/wxlogin`,
+        wxloginUrl: `${host}/user/wxlogin`,
         // 用户是否注册
-        isRegisterUrl: `${hostjava}/ban/user/isRegister`,
+        isRegisterUrl: `${host}/user/isRegister`,
         // 用户信息
-        userInfoUrl: `${hostjava}/ban/user/userInfo`,
+        userInfoUrl: `${host}/user/userInfo`,
         // 用户注册并设置
-        userRegUrl: `${hostjava}/ban/user/register`,
+        userRegUrl: `${host}/user/register`,
         // 用户更新设置
-        setUpdateUrl: `${hostjava}/ban/user/update`,
+        setUpdateUrl: `${host}/user/update`,
         // 获取限行数据
-        getBanDataUrl: `${hostjava}/ban/alert`,
+        getBanDataUrl: `${host}/alert`,
         // 保存FormIds
-        saveFormIds: `${hostjava}/ban/user/addFromId`,
+        saveFormIds: `${host}/user/addFromId`,
         // 发送通知提醒
-        sendMsgUrl: `${hostjava}/ban/sendmsg`
+        sendMsgUrl: `${host}/sendmsg`
     }
 };
 module.exports = config;
